@@ -34,7 +34,7 @@ print(profesion_doctor.mostrar_informacion())
 print("Contraseña del doctor:", profesion_doctor.contraseña)
 
 # Cambiar la contraseña
-profesion_doctor.contraseña = "nuevaContraseñaDoc"
+
 print("Nueva contraseña del doctor:", profesion_doctor.contraseña)
 
 class Chef(Persona): #Clase hija
@@ -61,7 +61,6 @@ profesion_chef = Chef("Lucia", "Rodriguez", 28, "lucia28@gmail.com", "chef1234",
 
 # Mostrar la información del chef
 print(profesion_chef.mostrar_informacion())
-print("Contraseña del chef:", profesion_chef.contraseña)
 
 # Cambiar la contraseña
 profesion_chef.contraseña = "nuevaContraseñaChef"

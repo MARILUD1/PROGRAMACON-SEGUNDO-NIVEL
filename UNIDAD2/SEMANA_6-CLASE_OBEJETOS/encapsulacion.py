@@ -25,7 +25,6 @@ class Doctor(Persona):  # Clase hija
     def mostrar_informacion(self):
         return f"Doctor {self.nombre} {self.apellido}, {self.edad} años, correo: {self.correo}, bisturi: {self.bisturi}"
 
-
 class Chef(Persona):  # Clase hija
     def __init__(self, nombre, apellido, edad, correo, contraseña, sarten):
         super().__init__(nombre, apellido, edad, correo, contraseña)
@@ -40,14 +39,9 @@ profesion_doctor = Doctor("Esteban", "Torres", 36, "esteban36@gmail.com", "esDoc
 
 # Intentar acceder a la contraseña privada directamente (esto generará un error)
 try:
-    print(profesion_doctor.__contraseña)
+    print(profesion_doctor.verificar_contraseña("esDoc36"))
 except AttributeError as e:
     print(e)
-
-print(profesion_doctor.verificar_contraseña("esDoc36"))
-print(profesion_doctor.cambiar_contraseña(123j))
-
-
 
 # Se verifica la contraseña usando el método de la clase
 #print("Verificación de la contraseña del doctor:", profesion_doctor.verificar_contraseña("esDoc36"))
@@ -61,11 +55,10 @@ profesion_chef = Chef("Lucia", "Rodriguez", 28, "lucia28@gmail.com", "chef1234",
 # Mostrar la información del chef
 print(profesion_chef.mostrar_informacion())
 try:
-    print(profesion_chef.__contraseña)
+    print(profesion_chef.verificar_contraseña("chef1234"))
 except AttributeError as e:
     print(e)
-    print(profesion_chef.verificar_contraseña("chef1234"))
-    print(profesion_doctor.cambiar_contraseña("123Chef"))
+
 
 
 

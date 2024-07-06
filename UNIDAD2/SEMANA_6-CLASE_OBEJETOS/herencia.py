@@ -17,6 +17,7 @@ class Doctor(Persona): #Classe hija
 # # Crear el objeto de Doctor  con atributos heredador y propio
 profesion  = Doctor("Esteban", "Torres", 36, "Ecuatoriano")
 
+
 # Mostrar la información del doctor
 print(profesion.mostrar_informacion())
 class Chef(Persona):

@@ -12,10 +12,6 @@ class Persona:
     def contraseña(self):
         return self.__contraseña
 
-    @contraseña.setter
-    def contraseña(self, nueva_contraseña):
-        self.__contraseña = nueva_contraseña
-
 
 class Doctor(Persona): # Clase hija
     def __init__(self, nombre, apellido, edad, correo, contraseña, bisturi):

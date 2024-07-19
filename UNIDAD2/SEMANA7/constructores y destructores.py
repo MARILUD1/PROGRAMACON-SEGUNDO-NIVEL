@@ -1,24 +1,27 @@
-class Carpeta:
-    def __init__(self, nombre, apellidos, correo, ciudad):  # Constructor
-        self.nombre = nombre
-        self.apellidos = apellidos
-        self.correo = correo
-        self.ciudad = ciudad
-        print(f"Constructor Carpeta: Carpeta creada con {self.nombre}, {self.apellidos}, {self.correo}, {self.ciudad}. Datos.")
+import threading
+import time
+import random # random se usa para simular variabilidad en los tiempos de descarga de los archivos.
 
-    def __del__(self):#Destructor
-        print(f"Destructor Carpeta: {self.nombre} {self.apellidos}, {self.correo}, {self.ciudad} ha sido eliminado.")
+def download_file(file_id):
+    print(f"Iniciando la descarga del archivo {file_id}")
+    download_time = random.randint(6, 12)
+    time.sleep(download_time)
+    print(f"Descarga del archivo {file_id} completada en {download_time} segundos")
 
-    def mostrar_informacion(self):
-        return f"Carpeta {self.nombre}, {self.apellidos}, {self.correo}, {self.ciudad}" #Devolver estos atributos
+def main():
+    threads = []
+    num_files = 5  # Número de archivos a descargar
 
-# Crear el objeto Carpeta
-print("Creando el objeto Carpeta...")
-archivos = Carpeta("Carlos", "Enriquez", "juan.perez@example.com", "Madrid")
+    for i in range(num_files):
+        thread = threading.Thread(target=download_file, args=(i,))
+        threads.append(thread)
+        thread.start()
 
-# Mostrar informacion del objeto Carpeta
-print(archivos.mostrar_informacion())
+    # Esperar a que todos los hilos terminen
+    for thread in threads:
+        thread.join()
 
-# Eliminar el objeto explícitamente para demostrar el uso del destructor
-print("Eliminando la Carpeta...")
-del archivos # Se eliminara la carpeta
+    print("Todas las descargas han terminado.")
+
+if __name__ == "__main__":
+    main()

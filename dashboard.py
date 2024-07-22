@@ -19,18 +19,21 @@ def mostrar_menu():
     ruta_base = os.path.dirname(__file__)
 
     opciones = {
-        #'1': 'UNIDAD 1/SEMANA2/1.0 ejemplo_del_docente.py',
-        '2': 'UNIDAD 1/SEMANA2/1.1 abstraccion.py',
-        '3': 'UNIDAD 1/SEMANA2/1.2 encapsulacion.py',
-        '4': 'UNIDAD 1/SEMANA2/1.3 polimorfismo.py',
-        '5': 'UNIDAD 1/SEMANA2/1.4 tecnica_herencia.py',
-        '6': 'UNIDAD 1/SEMANA 3/1.0 PROGRAMACION_OO.py',
-        '7': 'UNIDAD 1/SEMANA 3/1.1 TEMPERATURA_PROM.py',
-        '8': 'UNIDAD 1/SEMANA4/1.0 camioneta TOYOTA.py',
-        '9': 'UNIDAD 1/SEMANA4/1.1 ej_del_docente.py',
-        '10': 'UNIDAD2/SEMANA 5/1.0 tipos_de_datos_identificadores.py ',
-        '11': 'UNIDAD2/SEMANA_6/1.0.py',
-        '12': 'UNIDAD2/SEMANA7/1.1  constructores y destructores',
+
+        '1': 'UNIDAD 1/SEMANA2/1.1 abstraccion.py',
+        '2': 'UNIDAD 1/SEMANA2/1.2 encapsulacion.py',
+        '3': 'UNIDAD 1/SEMANA2/1.3 polimorfismo.py',
+        '4': 'UNIDAD 1/SEMANA2/1.4 tecnica_herencia.py',
+        '5': 'UNIDAD 1/SEMANA 3/1.0 PROGRAMACION_OO.py',
+        '6': 'UNIDAD 1/SEMANA 3/1. 1 TEMPERATURA_PROM.py',
+        '7': 'UNIDAD 1/SEMANA4/1. 0 camioneta TOYOTA.py',
+        '8': 'UNIDAD 1/SEMANA4/1.1 ej_del_docente.py',
+        '9': 'UNIDAD2/SEMANA 5/1.0 tipos_de_datos_identificadores.py',
+        '10': 'UNIDAD2/SEMANA_6/1.0 metodo_de_encapsulado.py',
+        '11': 'UNIDAD2/SEMANA_6/1.1 metodo_herencia.py',
+        '12': 'UNIDAD2/SEMANA_6/1.2 metodo_polimorfismo.py',
+        '13': 'UNIDAD2/SEMANA7/1.1 constructores y destructores.py',
+
 
         # Agrega aquí el resto de las rutas de los scripts
     }

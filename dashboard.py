@@ -12,7 +12,7 @@ def mostrar_codigo(ruta_script):
         print("El archivo no se encontró.")
     except Exception as e:
         print(f"Ocurrió un error al leer el archivo: {e}")
-
+        print("mensaje")
 
 def mostrar_menu():
     # Define la ruta base donde se encuentra el dashboard.py

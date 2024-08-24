@@ -41,6 +41,7 @@ class Inventario:
         with open("Inventario_mejorado.txt", "r") as file:
             for line in file:
                 id_producto, nombre, cantidad, precio = line.split(",")
+
                 producto = Producto(id_producto, nombre, cantidad, precio)
                 self.productos.append(producto)
     def guardar_Inventario(self):
@@ -116,8 +117,6 @@ def mostrar_menu():
 
 def gestionar_inventario():
     inventario = Inventario()
-
-
 
     while True:
         mostrar_menu()

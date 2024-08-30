@@ -30,20 +30,21 @@ class Producto:
 
     # Representación en cadena del producto
     def __str__(self):
-        return f"ID: {self.id_producto}, Nombre: {self.nombre}, Cantidad: {self.cantidad}, Precio: ${self.precio:.2f}"
+     return f"ID: {self.id_producto}, Nombre: {self.nombre}, Cantidad: {self.cantidad}, Precio: ${self.precio:.2f}"
 
 
 class Inventario:
     def __init__(self):
         self.productos = []
         self.cargar_Inventario()
+
     def cargar_Inventario(self):
         with open("Inventario_mejorado.txt", "r") as file:
             for line in file:
                 id_producto, nombre, cantidad, precio = line.split(",")
-
                 producto = Producto(id_producto, nombre, cantidad, precio)
                 self.productos.append(producto)
+                self.productos[id] = Producto(id_producto, nombre, cantidad, precio)
     def guardar_Inventario(self):
         with open("Inventario_mejorado.txt", "a") as file:
             for producto in self.productos:
@@ -51,17 +52,11 @@ class Inventario:
 
 
 
-
     def añadir_producto(self, producto):
         # Verificar si el ID del producto es único
         for p in self.productos:
             if p.get_id() == producto.get_id():
-                print("Error: El ID del producto ya existe.")
-                return
-        self.productos.append(producto)
-        self.guardar_Inventario()
-        print("Producto añadido correctamente.")
-
+             print("Error: El ID del producto ya existe.")
     def eliminar_producto(self, id_producto):
         # Buscar y eliminar el producto por ID
         for p in self.productos:
@@ -70,7 +65,7 @@ class Inventario:
                 self.guardar_Inventario()
                 print("Producto eliminado correctamente.")
                 return
-        print("Error: Producto no encontrado.")
+            print("Error: Producto no encontrado.")
 
     def actualizar_producto(self, id_producto, cantidad=int, precio=float):
         # Buscar y actualizar el producto por ID
@@ -149,8 +144,8 @@ def gestionar_inventario():
             id_producto = input("Introduce el ID del producto a actualizar: ")
             cantidad = input("Introduce la nueva cantidad (deja en blanco para no cambiar): ")
             precio = input("Introduce el nuevo precio (deja en blanco para no cambiar): ")
-            cantidad = int(cantidad) if cantidad else None
-            precio = float(precio) if precio else None
+            cantidad = int(cantidad)
+            precio = float(precio)
             inventario.actualizar_producto(id_producto, cantidad, precio)
 
 

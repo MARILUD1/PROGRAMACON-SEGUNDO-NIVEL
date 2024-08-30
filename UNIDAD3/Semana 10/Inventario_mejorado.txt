@@ -1,1 +1,0 @@
-001,zapatos,2,49.0,001,zapatos,2,49.0,002,camisetas,6,56.0,001,zapatos,2,49.0,002,camisetas,6,56.0,003,chompas,4,60.0,001,zapatos,2,49.0,002,camisetas,6,56.0,003,chompas,7,89.0,

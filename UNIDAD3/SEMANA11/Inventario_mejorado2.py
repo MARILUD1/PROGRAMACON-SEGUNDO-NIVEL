@@ -135,10 +135,9 @@ def gestionar_inventario():
 
         elif opcion == "3":
             id_producto = input("Introduce el ID del producto a actualizar: ")
-            precio = input("Introduce el nuevo precio total (deja en blanco para no cambiar): ")
-            cantidad = int(cantidad) if cantidad else None
-            precio = float(precio) if precio else None
-            inventario.actualizar_producto(id_producto, cantidad, precio)
+            cantidad = int("cantidad")
+            precio = float("precio")
+            inventario.actualizar_producto(id_producto, cantidad == + 1, precio == +1)
 
 
         elif opcion == "4":

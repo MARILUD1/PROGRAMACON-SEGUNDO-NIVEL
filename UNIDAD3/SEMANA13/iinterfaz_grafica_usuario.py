@@ -1,71 +1,82 @@
 #Interfaz grafica de usuario (GUI)
-
 import tkinter as tk
+from tkinter import ttk
 from tkinter import messagebox
+from datetime import datetime
 
-# Función para agregar un elemento a la lista
-def agregar_dato():
-    id_usuario = entrada_id.get()
-    dato = entrada_texto.get()
-    edad = entrada_edad.get()
+#Función para obtener la fecha automatica actual  dd/mm/aaaa
+def obtener_fecha_actual():
+    hoy = datetime.now()
+    return hoy.strftime("%d/%m/%Y")
 
-    # Validación de los campos
-    if id_usuario and dato and edad:
-        if edad.isdigit():  # Verificar que la edad sea un número
-            lista_datos.insert(tk.END, f"ID: {id_usuario} - Dato: {dato} - Edad: {edad}")
-            entrada_id.delete(0, tk.END)
-            entrada_texto.delete(0, tk.END)
-            entrada_edad.delete(0, tk.END)
-        else:
-            messagebox.showerror("Intento fallido", "Colocar solo numeros.")
+# Función para agregar un nuevo evento a la lista
+def agregar_evento():
+    empleado_id = entry_id.get()
+    hora = entry_hora.get()
+    descripcion = entry_descripcion.get()
+
+    if empleado_id and hora and descripcion:
+        fecha_actual = obtener_fecha_actual()
+        treeview.insert('', 'end', values=(fecha_actual, empleado_id, hora, descripcion))
+        limpiar_campos()
     else:
-        messagebox.showwarning("Aviso", "Para agregar llenar todos los campos.")
+        messagebox.showwarning("Advertencia", "Todos los campos deben estar completos.")
 
-# Función para limpiar la lista
-def borrar_lista():
-    lista_datos.delete(0, tk.END)
+# Función para limpiar los campos de entrada
+def limpiar_campos():
+    entry_id.delete(0, tk.END)
+    entry_hora.delete(0, tk.END)
+    entry_descripcion.delete(0, tk.END)
 
-# Crear ventana principal
-ventana = tk.Tk()
-ventana.title("Registro de usuarios")
+# Función para salir de la aplicación
+def salir():
+    Appregistro.quit()
 
-# Etiqueta para el ID
-etiqueta_id = tk.Label(ventana, text="Ingresar el número de cédula de usuarios:")
-etiqueta_id.pack(pady=5)
+# Configuración de la ventana principal
+Appregistro = tk.Tk()
+Appregistro.title("Registro de Asistencia")
+Appregistro.geometry("800x700")
 
-# Campo de texto para el ID
-entrada_id = tk.Entry(ventana, width=40)
-entrada_id.pack(pady=5)
+# Frame para la lista de eventos (TreeView)
+frame_lista = tk.Frame(Appregistro)
+frame_lista.pack(pady=10)
 
-# Etiqueta para el dato
-etiqueta_dato = tk.Label(ventana, text="Ingresar nombres y apellidos de cada usuario:")
-etiqueta_dato.pack(pady=5)
+# Configuración del TreeView para mostrar los eventos
+treeview = ttk.Treeview(frame_lista, columns=("Fecha","ID Empleado", "Hora", "Entrada o salida"), show="headings")
+treeview.heading("Fecha", text="Fecha")
+treeview.heading("ID Empleado", text="ID Empleado")
+treeview.heading("Hora", text="Hora")
+treeview.heading("Entrada o salida", text="Entrada o Salida")
+treeview.pack()
+# Frame para los campos de entrada y etiquetas
+frame_entrada = tk.Frame(Appregistro)
+frame_entrada.pack(pady=10)
 
-# Campo de texto para el dato
-entrada_texto = tk.Entry(ventana, width=40)
-entrada_texto.pack(pady=5)
+tk.Label(frame_entrada, text="ID Empleado:").grid(row=0, column=0, padx=4, pady=4)
+entry_id = tk.Entry(frame_entrada)
+entry_id.grid(row=0, column=1, padx=4, pady=4)
 
-# Etiqueta para la edad
-etiqueta_edad = tk.Label(ventana, text="Ingresar la edad de cada usuario:")
-etiqueta_edad.pack(pady=5)
+tk.Label(frame_entrada, text="Hora:").grid(row=1, column=0, padx=4, pady=4)
+entry_hora = tk.Entry(frame_entrada)
+entry_hora.grid(row=1, column=1, padx=4, pady=4)
 
-# Campo de texto para la edad
-entrada_edad = tk.Entry(ventana, width=40)
-entrada_edad.pack(pady=5)
+tk.Label(frame_entrada, text="Entrada o salida:").grid(row=2, column=0, padx=4, pady=4)
+entry_descripcion = tk.Entry(frame_entrada)
+entry_descripcion.grid(row=2, column=1, padx=4, pady=4)
 
-# Botón para agregar
-boton_agregar = tk.Button(ventana, text="Agregar", command=agregar_dato)
-boton_agregar.pack(pady=5)
+# Frame para los botones de acción
+frame_botones = tk.Frame(Appregistro)
+frame_botones.pack(pady=10)
 
-# Lista para mostrar los datos agregados
-lista_datos = tk.Listbox(ventana, width=50, height=10)
-lista_datos.pack(pady=5)
+# Botones para agregar, limpiar y salir
+btn_agregar = tk.Button(frame_botones, text="Agregar Datos", command=agregar_evento)
+btn_agregar.grid(row=0, column=0, padx=5)
 
-# Botón para borrar la lista
-boton_borrar = tk.Button(ventana, text="Borrar", command=borrar_lista)
-boton_borrar.pack(pady=5)
+btn_limpiar = tk.Button(frame_botones, text="Borrar Datos", command=limpiar_campos)
+btn_limpiar.grid(row=0, column=1, padx=5)
 
+btn_salir = tk.Button(frame_botones, text="Salir", command=salir)
+btn_salir.grid(row=0, column=2, padx=5)
 
-
-# Empezar a registrar
-ventana.mainloop()
+# Iniciar el loop principal de la aplicación
+Appregistro.mainloop()

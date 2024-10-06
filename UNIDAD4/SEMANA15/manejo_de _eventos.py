@@ -4,6 +4,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from datetime import datetime
 
+
 # Función para obtener la fecha automática actual (dd/mm/aaaa)
 def obtener_fecha_actual():
     hoy = datetime.now()
